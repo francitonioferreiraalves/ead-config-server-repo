@@ -1,0 +1,59 @@
+server:
+  port: 8087
+  servlet:
+    context-path: '/ead-authuser/'
+
+  error:
+    include-stacktrace: never
+    
+spring:
+  
+  application:
+    name: ead-authuser-service
+  datasource:
+    url: jdbc:postgresql://localhost:15432/ead-authuser-v2
+    username: postgres
+    password: Postgres2019!
+  jpa:
+    hibernate:
+      ddl-auto: update
+      dialect: org.hibernate.dialect.PostgreSQLDialect
+      jdbc:
+        lob.non-contextual-creation: true
+    properties:
+      hibernate:
+        show_sql: true
+ 
+  rabbitmq:
+    addresses: ${RABBIT_ADRESS}
+           
+logging:
+  level:
+    com.ead: TRACE
+    root: INFO
+    org.springframework.web: DEBUG
+    org.hibernate: INFO
+
+ead:
+  api:
+    url:
+      course: 'http://ead-course-service/ead-course/'
+  broker:
+    exchange:
+      userEvent: ead.userevent
+
+resilience4j:
+  circuitbreaker:
+    instances:
+      circuitbreakerInstance:
+        slidingWindowSize: 30
+        permittedNumberOfCallsInHalfOpenState: 2
+        slidingWindowType: TIME_BASED
+        minimumNumberOfCalls: 2
+        waitDurationInOpenState: 30s
+        failureRateThreshold: 80
+  retry:
+    instances:
+      retryInstance:
+        maxRetryAttempts: 3
+        waitDuration: 5s
