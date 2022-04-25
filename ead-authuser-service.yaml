@@ -41,6 +41,19 @@ ead:
   broker:
     exchange:
       userEvent: ead.userevent
+      
+authuser:
+  refreshscope:
+    name: Francitonio Ferreira Alves
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include:
+          - refresh
+          - health
+
 
 resilience4j:
   circuitbreaker:
