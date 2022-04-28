@@ -1,5 +1,3 @@
-server:
-  port: 8888
 
 spring:
   application:
@@ -10,11 +8,16 @@ spring:
         git:
           uri: https://github.com/francitonioferreiraalves/ead-config-server-repo
           default-label: main
+ead:
+  serviceRegistry:
+    username: serviceregistry
+    password: 'ead123sr'
+
 
 eureka:
   client:
     serviceUrl:
-      defaultZone: 'http://localhost:8761/eureka'
+      defaultZone: 'http://${ead.serviceRegistry.username}:${ead.serviceRegistry.password}@localhost:8761/eureka'
   instance:
     hostname: localhost
 
