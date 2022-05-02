@@ -8,7 +8,6 @@ spring:
     name: ead-authuser-service
   datasource:
     url: jdbc:postgresql://localhost:15432/ead-authuser-v2
-    driver-class-name: com.mysql.jdbc.Driver
     username: postgres
     password: Postgres2019!
   jpa:
