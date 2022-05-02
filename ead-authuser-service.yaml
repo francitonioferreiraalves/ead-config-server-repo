@@ -3,15 +3,12 @@ server:
   servlet:
     context-path: '/ead-authuser/'
 
-  error:
-    include-stacktrace: never
-    
 spring:
-  
   application:
     name: ead-authuser-service
   datasource:
     url: jdbc:postgresql://localhost:15432/ead-authuser-v2
+    driver-class-name: com.mysql.jdbc.Driver
     username: postgres
     password: Postgres2019!
   jpa:
@@ -23,10 +20,9 @@ spring:
     properties:
       hibernate:
         show_sql: true
- 
+  
   rabbitmq:
-    addresses: ${RABBIT_ADRESS}
-           
+    addresses: amqps://nmgojkfr:Lf_lZQLPVo7Q2oK9UpEcRU3tM_oSFLj9@gull.rmq.cloudamqp.com/nmgojkfr
 logging:
   level:
     com.ead: TRACE
@@ -37,14 +33,14 @@ logging:
 ead:
   api:
     url:
-      course: 'http://ead-course-service/ead-course/'
+      course: 'http://ead-course-service/ead-course'
   broker:
     exchange:
       userEvent: ead.userevent
-      
+
 authuser:
   refreshscope:
-    name: Francitonio Ferreira Alves UPDATE!!!!!!
+    name: Francitonio Ferreira UPDATE!!!!!!!
 
 management:
   endpoints:

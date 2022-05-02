@@ -24,7 +24,7 @@ spring:
         show_sql: true
         
   rabbitmq:
-     addresses: ${RABBIT_ADRESS}
+    addresses: amqps://nmgojkfr:Lf_lZQLPVo7Q2oK9UpEcRU3tM_oSFLj9@gull.rmq.cloudamqp.com/nmgojkfr
 
 logging:
   level:
